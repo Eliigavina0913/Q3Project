@@ -15,7 +15,6 @@
             background-color: #1b538f;
         }
 
-
         .container1 {
             background-color: orange;
             width: 800px;
@@ -27,6 +26,7 @@
         .lucasreyes {
             transition: 0.3s;
         }
+
         .lucasreyes:hover {
             transform: scale(1.05);
             z-index: 2;
@@ -46,25 +46,51 @@
             color: white;
         }
 
-         .navbar-nav .nav-link {
-            font-family: "Times New Roman";}
+        .navbar-nav .nav-link {
+            font-family: "Times New Roman";
+        }
 
-        img{
+        img {
             width: 400px;
             height: 400px;
         }
 
-        p{
+        p {
             color: white;
-           text-align: center;
+            text-align: center;
         }
 
-         .shiacruz{
-           
-            margin-left: 1100px;}
+        .shiacruz {
+            margin-left: 1100px;
+        }
 
-        
+        .map-container {
+            text-align: center;
+            margin-top: 30px;
+        }
 
+        .form-section {
+            margin-top: 30px;
+        }
+
+        .footer {
+            background-color: #f1f1f1;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom:0;
+        }
+
+        .form-section form {
+            text-align: center;
+        }
+
+        .contact-info {
+            text-align: center;
+            margin-top: 30px;
+
+        }
     </style>
 </head>
 <body>
@@ -86,18 +112,93 @@
             </div>
         </div>
     </nav>
-    
+
     <img src="https://lrmc.ph/wp-content/uploads/2020/07/lrmc_logo_upres.png">
 
     <div class="shiacruz">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQJf4P-LU7fWJV4lqFGSPM4wv9mqC10eppdg&s">
-    
-    <div class="container1">
-    <center>
-    <p>The Philippine Light Rail Line 1 was first introduced-</p>
-     
- 
+    </div>
 
-     
+    <div class="container1">
+        <br>
+        <center>
+            <p>The Philippine Light Rail Line 1 was first introduced-</p>
+        </center>
+    </div>
+
+    <div class="map-container">
+        <h2>LRT Line 1 Transit Map</h2>
+        <img src="https://lrmc.ph/wp-content/uploads/2024/11/Gen-4-Route-Map-27.5-%C3%97-7.5-in-1-1.png?w=640" alt="LRT Line 1 Map">
+    </div>
+
+    <div class="container1 form-section">
+        <h2>Station Selector</h2>
+        <form id="fareForm">
+            <label for="leavingFrom">Leaving From:</label>
+            <select class="form-select" id="leavingFrom">
+                <option value="roosevelt">Roosevelt</option>
+                <option value="balintawak">Balintawak</option>
+                <option value="roosevelt">Baclaran</option>
+                <option value="balintawak">EDSA</option>
+                <option value="roosevelt">Roosevelt</option>
+                <option value="balintawak">Balintawak</option>
+            </select>
+
+            <label for="goingTo" class="mt-2">Going To:</label>
+            <select class="form-select" id="goingTo">
+                <option value="roosevelt">Roosevelt</option>
+                <option value="balintawak">Balintawak</option>
+                <option value="baclaran">Baclaran</option>
+              
+            </select>
+
+            <button type="submit" class="btn btn-primary mt-2">Fare Price</button>
+        </form>
+    </div>
+
+  
+    
+
+   <script>
+       
+        document.getElementById("fareForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            let leavingFrom = document.getElementById("leavingFrom").value;
+            let goingTo = document.getElementById("goingTo").value;
+
+            
+            if (leavingFrom === goingTo) {
+                alert("Please select different stations for departure and destination.");
+            } else {
+                alert("Fare calculation from " + leavingFrom + " to " + goingTo + ": Php " + calculateFare(leavingFrom, goingTo));
+            }
+        });
+
+        function calculateFare(leavingFrom, goingTo) {
+            const fares = {
+                'roosevelt': 5,
+                'balintawak': 6,
+                'baclaran': 7,
+
+            };
+
+            
+            let departureFare = fares[leavingFrom];
+            let destinationFare = fares[goingTo];
+
+            let fare = Math.abs(departureFare + destinationFare); 
+            return fare;
+        }
+    </script>
+
 </body>
 </html>
+
+
+
+    
+          
+    
+        
+       
