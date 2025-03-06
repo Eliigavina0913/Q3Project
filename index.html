@@ -130,67 +130,205 @@
         <h2>LRT Line 1 Transit Map</h2>
         <img src="https://lrmc.ph/wp-content/uploads/2024/11/Gen-4-Route-Map-27.5-%C3%97-7.5-in-1-1.png?w=640" alt="LRT Line 1 Map">
     </div>
-
     <div class="container1 form-section">
         <h2>Station Selector</h2>
-        <form id="fareForm">
-            <label for="leavingFrom">Leaving From:</label>
+        
+            <label>Leaving From:</label>
             <select class="form-select" id="leavingFrom">
-                <option value="roosevelt">Roosevelt</option>
-                <option value="balintawak">Balintawak</option>
-                <option value="roosevelt">Baclaran</option>
-                <option value="balintawak">EDSA</option>
-                <option value="roosevelt">Roosevelt</option>
-                <option value="balintawak">Balintawak</option>
+                <option value="1">Dr. Santos</option>
+                <option value="2">Ninoy Aquino Avenue</option>
+                <option value="3">PITX</option>
+                <option value="4">MIA Road</option>
+                <option value="5">Redemptionist-Aseana</option>
+                <option value="6">Baclaran</option>
+                <option value="7">EDSA</option>
+                <option value="8">Libertad</option>
+                <option value="9">Gil Puyat</option>
+                <option value="10">Vito Cruz</option>
+                <option value="11">Quirino</option>
+                <option value="12">Pedro Gil</option>
+                <option value="13">United Nations</option>
+                <option value="14">Central Terminal</option>
+                <option value="15">Carriedo</option>
+                <option value="16">Doroteo Jose</option>
+                <option value="17">Bambang</option>
+                <option value="18">Tayuman</option>
+                <option value="19">Blumentritt</option>
+                <option value="20">Jose Abad Santos</option>
+                <option value="21">R. Papa</option>
+                <option value="22">5th Avenue</option>
+                <option value="23">Yamaha Monumento</option>
+                <option value="24">Balintawak</option>
+                <option value="25">Fernando Poe Jr.</option>
+                
+
             </select>
 
-            <label for="goingTo" class="mt-2">Going To:</label>
+            <label class="mt-2">Going To:</label>
             <select class="form-select" id="goingTo">
-                <option value="roosevelt">Roosevelt</option>
-                <option value="balintawak">Balintawak</option>
-                <option value="baclaran">Baclaran</option>
-              
+               <option value="1">Dr. Santos</option>
+                <option value="2">Ninoy Aquino Avenue</option>
+                <option value="3">PITX</option>
+                <option value="4">MIA Road</option>
+                <option value="5">Redemptionist-Aseana</option>
+                <option value="6">Baclaran</option>
+                <option value="7">EDSA</option>
+                <option value="8">Libertad</option>
+                <option value="9">Gil Puyat</option>
+                <option value="10">Vito Cruz</option>
+                <option value="11">Quirino</option>
+                <option value="12">Pedro Gil</option>
+                <option value="13">United Nations</option>
+                <option value="14">Central Terminal</option>
+                <option value="15">Carriedo</option>
+                <option value="16">Doroteo Jose</option>
+                <option value="17">Bambang</option>
+                <option value="18">Tayuman</option>
+                <option value="19">Blumentritt</option>
+                <option value="20">Jose Abad Santos</option>
+                <option value="21">R. Papa</option>
+                <option value="22">5th Avenue</option>
+                <option value="23">Yamaha Monumento</option>
+                <option value="24">Balintawak</option>
+                <option value="25">Fernando Poe Jr.</option>
             </select>
 
-            <button type="submit" class="btn btn-primary mt-2">Fare Price</button>
-        </form>
+            <button type="submit" class="btn btn-primary mt-2" onclick="showFare()">Fare Price</button>
+            <button type="submit" class="btn btn-secondary mt-2" onclick="showDiscount()">Discount Price</button>
+            <p id="show">Ticket Price: </p>
+            <br>
+            <p id="discountprice">Discounted Price: </p>
+        
     </div>
 
   
     
 
    <script>
-       
-        document.getElementById("fareForm").addEventListener("submit", function(event) {
-            event.preventDefault();
+ function showFare() {
+    var leaving = document.getElementById('leavingFrom').value;
+    var going = document.getElementById('goingTo').value;
 
-            let leavingFrom = document.getElementById("leavingFrom").value;
-            let goingTo = document.getElementById("goingTo").value;
+    var distance = Math.abs(going - leaving);
 
-            
-            if (leavingFrom === goingTo) {
-                alert("Please select different stations for departure and destination.");
-            } else {
-                alert("Fare calculation from " + leavingFrom + " to " + goingTo + ": Php " + calculateFare(leavingFrom, goingTo));
-            }
-        });
+    let fare = 0;
 
-        function calculateFare(leavingFrom, goingTo) {
-            const fares = {
-                'roosevelt': 5,
-                'balintawak': 6,
-                'baclaran': 7,
+    if (distance === 1) {
+      fare = 15;
+    } else if (distance === 2) {
+      fare = 20;
+    } else if (distance === 3) {
+      fare = 20;
+    } else if (distance === 4) {
+      fare = 20;
+    } else if (distance === 5) {
+      fare = 25;
+    } else if (distance === 6) {
+      fare = 25;
+    } else if (distance === 7) {
+      fare = 25;
+    } else if (distance === 8) {
+      fare = 25;
+    } else if (distance === 9) {
+      fare = 25;
+    } else if (distance === 10) {
+      fare = 30;
+    } else if (distance === 11) {
+      fare = 30;
+    } else if (distance === 12) {
+      fare = 30;
+    } else if (distance === 13) {
+      fare = 30;
+    } else if (distance === 14) {
+      fare = 30;
+    } else if (distance === 15) {
+      fare = 35;
+    } else if (distance === 16) {
+      fare = 35;
+    } else if (distance === 17) {
+      fare = 35;
+    } else if (distance === 18) {
+      fare = 35;
+    } else if (distance === 19) {
+      fare = 35;
+    } else if (distance === 20) {
+      fare = 35;
+    } else if (distance === 21) {
+      fare = 40;
+    } else if (distance === 22) {
+      fare = 40;
+    } else if (distance === 23) {
+      fare = 45;
+    } else if (distance === 24) {
+      fare = 45; 
+  } 
 
-            };
+    document.getElementById("show").innerHTML = "Ticket Price: ₱" + fare;
+  }
+function showDiscount() {
+    var leaving = document.getElementById('leavingFrom').value;
+    var going = document.getElementById('goingTo').value;
 
-            
-            let departureFare = fares[leavingFrom];
-            let destinationFare = fares[goingTo];
+    var distance = Math.abs(going - leaving);
 
-            let fare = Math.abs(departureFare + destinationFare); 
-            return fare;
-        }
+    let fare = 0;
+
+    if (distance === 1) {
+      fare = 15;
+    } else if (distance === 2) {
+      fare = 20;
+    } else if (distance === 3) {
+      fare = 20;
+    } else if (distance === 4) {
+      fare = 20;
+    } else if (distance === 5) {
+      fare = 25;
+    } else if (distance === 6) {
+      fare = 25;
+    } else if (distance === 7) {
+      fare = 25;
+    } else if (distance === 8) {
+      fare = 25;
+    } else if (distance === 9) {
+      fare = 25;
+    } else if (distance === 10) {
+      fare = 30;
+    } else if (distance === 11) {
+      fare = 30;
+    } else if (distance === 12) {
+      fare = 30;
+    } else if (distance === 13) {
+      fare = 30;
+    } else if (distance === 14) {
+      fare = 30;
+    } else if (distance === 15) {
+      fare = 35;
+    } else if (distance === 16) {
+      fare = 35;
+    } else if (distance === 17) {
+      fare = 35;
+    } else if (distance === 18) {
+      fare = 35;
+    } else if (distance === 19) {
+      fare = 35;
+    } else if (distance === 20) {
+      fare = 35;
+    } else if (distance === 21) {
+      fare = 40;
+    } else if (distance === 22) {
+      fare = 40;
+    } else if (distance === 23) {
+      fare = 45;
+    } else if (distance === 24) {
+      fare = 45; 
+  } 
+  var discountedfare = fare * 0.8
+
+    document.getElementById("discountprice").innerHTML = "Discounted Price: ₱" + discountedfare;
+  }
+ 
     </script>
+
 
 </body>
 </html>
